@@ -92,7 +92,7 @@ function format_date() {
     the_time('H:i');
     return;
   }
-  return the_time('Y-m-d H:i:s');
+  return the_time('Y-m-d H:i');
 }
 
 function leros_tag_feed($tag) {
