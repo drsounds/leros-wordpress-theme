@@ -44,7 +44,7 @@
                   
                     <div class="col-md-12" id="title" style="text-align: center">
                         <a id="toggler" class="fa fa-bars" style="float: left;font-size:50pt; color: white" onclick="toggleMenu(event)" href="javascript:void(event)"></a>
-                        <h1><a href="/"><?php bloginfo('name');?></a></h1>
+                        <h1><a href="<?php echo get_home_url();?>"><?php bloginfo('name');?></a></h1>
                         <p><?php bloginfo('description');?></p>
                         
 
