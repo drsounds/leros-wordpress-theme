@@ -56,7 +56,7 @@ function leros_recent_news_category() {
   $q = new WP_Query(array('posts_per_page' => 5, 'category' => $category->id));
   $q->query(array('category' => $category->id, 'posts_per_page' => 5));
   if ($q->have_posts()): while($q->have_posts()): $q->the_post();
-  ?><tr><td><?php echo the_time('Y-m-d') ?><br><a href="<?php echo the_permalink()?>"><?php the_title();?></a></td></tr><?php
+  ?><tr><td><?php format_date() ?><br><a href="<?php echo the_permalink()?>"><?php the_title();?></a></td></tr><?php
   endwhile;
   endif;
   ?></tbody></table><?php
@@ -77,10 +77,22 @@ function leros_recent_news() {
   $q = new WP_Query(array('posts_per_page' => 5));
   $q->query(array('posts_per_page' => 5));
   if ($q->have_posts()): while($q->have_posts()): $q->the_post();
-  ?><tr><td><?php echo the_time('Y-m-d') ?><br><a href="<?php echo the_permalink()?>"><?php the_title();?></a></td></tr><?php
+  ?><tr><td><?php format_date() ?><br><a href="<?php echo the_permalink()?>"><?php the_title();?></a></td></tr><?php
   endwhile;
   endif;
   ?></tbody></table><?php
+}
+
+function format_date() {
+  if (date('Yz') == get_the_time('Yz')) {
+    return the_time('H:i');
+  } 
+  if (date('Yz') - 1 == get_the_time('Yz')) {
+    echo __("Yesterday", "leros") . " ";
+    the_time('H:i');
+    return;
+  }
+  return the_time('Y-m-d');
 }
 
 function leros_tag_feed($tag) {
@@ -96,7 +108,7 @@ function leros_tag_feed($tag) {
   $q = new WP_Query(array('tag' => $tag->name, 'posts_per_page' => 5));
   $q->query(array('tag' => $tag->name, 'posts_per_page' => 5));
   if ($q->have_posts()): while($q->have_posts()): $q->the_post();
-  ?><tr><td><?php echo the_time('Y-m-d') ?><br><a href="<?php echo the_permalink()?>"><?php the_title();?></a></td></tr><?php
+  ?><tr><td><?php format_date() ?><br><a href="<?php echo the_permalink()?>"><?php the_title();?></a></td></tr><?php
   endwhile;
   endif;
   ?></tbody></table><?php
@@ -116,7 +128,7 @@ function leros_category_feed($category) {
   $q = new WP_Query();
   $q->query(array('cat' => $category->term_id, 'posts_per_page' => 5));
   if ($q->have_posts()): while($q->have_posts()): $q->the_post();
-  ?><tr><td><?php echo the_time('Y-m-d') ?><br><a href="<?php echo the_permalink()?>"><?php the_title();?></a></td></tr><?php
+  ?><tr><td><?php format_date() ?><br><a href="<?php echo the_permalink()?>"><?php the_title();?></a></td></tr><?php
   endwhile;
   endif;
   ?></tbody></table><?php
@@ -138,7 +150,7 @@ function leros_pages() {
   $q = new WP_Query(array('post_type' => 'page', 'posts_per_page' => 5));
   $q->query(array('posts_per_page' => 5,  'post_type' => 'page'));
   if ($q->have_posts()): while($q->have_posts()): $q->the_post();
-  ?><tr><td><?php echo the_time('Y-m-d') ?><br><a href="<?php echo the_permalink()?>"><?php the_title();?></a></td></tr><?php
+  ?><tr><td><?php format_date() ?><br><a href="<?php echo the_permalink()?>"><?php the_title();?></a></td></tr><?php
   endwhile;
   endif;
   ?></tbody></table><?php

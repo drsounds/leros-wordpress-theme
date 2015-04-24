@@ -41,6 +41,7 @@ In Time','Go Back in Time &raquo;&raquo;'); ?></p></div>
          leros_recent_news();
          leros_categories();
          else:
+         leros_recent_news();
             get_sidebar();
         endif;?>
     </div>
