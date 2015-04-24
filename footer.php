@@ -67,6 +67,7 @@
     </div>
 </div>
 <?php endif;?>
+</div>
 <div style="padding: 30pt; height: 200pt; background-color: rgba(233, 244, 255, .9); box-shadow:inset 0px 5pt 61pt white">
     <div class="row">
         <div class="col-md-12" style="text-align: center">

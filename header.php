@@ -41,13 +41,11 @@
             </div>
             <div id="title_row" style="">
                 <div class="row" style="margin-top: 0pt">
-                    <div class="col-md-3">
-                        <a id="toggler" class="fa fa-bars" style="font-size:50pt; color: white" onclick="toggleMenu(event)" href="javascript:void(event)"></a>
-                    </div>
-                    <div class="col-md-6" id="title" style="text-align: center">
-                        <h1><?php bloginfo('name');?></h1>
+                  
+                    <div class="col-md-12" id="title" style="text-align: center">
+                        <a id="toggler" class="fa fa-bars" style="float: left;font-size:50pt; color: white" onclick="toggleMenu(event)" href="javascript:void(event)"></a>
+                    <h1><?php bloginfo('name');?></h1>
                         <p><?php bloginfo('description');?></p>
-                        <p><?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?></p>
                         
 
                     </div>
@@ -59,13 +57,13 @@
             <div class="container">
                 <div class="menu">
                     <ul >
-                        <li class="page_item category_item"><a href="/"><?php echo __('Home', 'leros')?></a></lI>
+                        <li class="mitem category_item"><a href="/"><?php echo __('Home', 'leros')?></a></lI>
                         
                         <?php
                         $categories = get_categories();
                         foreach($categories as $c):
                             $category = get_category($c);?>
-                        <li class="page_item category_item"><a href="<?php echo get_category_link($category->cat_ID)?>"><?php echo $category->name?></a></lI>
+                        <li class="mitem category_item"><a href="<?php echo get_category_link($category->cat_ID)?>"><?php echo $category->name?></a></lI>
                         <?php endforeach;?>
                     </ul>
                     
@@ -74,11 +72,11 @@
                     <ul ><?php
                         $current_category = get_the_category();
                         $categories = get_categories(array('child_of' => $current_category[0]->cat_ID));
-                        ?><li class="page_item"><a href="<?php echo get_category_link($current_category->cat_ID);?>"><?php echo $current_category[0]->name . " - Hem"?></li><?php
+                        ?><li class="mitem"><a href="<?php echo get_category_link($current_category->cat_ID);?>"><?php echo $current_category[0]->name . " - Hem"?></li><?php
                         foreach($categories as $c):
                             $category = get_category($c);?>
                         
-                        <li class="page_item"><a href="<?php echo get_category_link($category->cat_ID)?>"><?php echo $category->name?></a></lI>
+                        <li class="mitem"><a href="<?php echo get_category_link($category->cat_ID)?>"><?php echo $category->name?></a></lI>
                         <?php endforeach;?>
                     </ul>
                     
