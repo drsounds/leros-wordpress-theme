@@ -211,12 +211,11 @@ function leros_tag_feed($tag) {
 
 
 function leros_category_feed($category) {
-
-  ?>   
-  <table width="100%" class="feed">
+  ?>  
+  <table width="100%" class="feed feed-<?php echo $category->term_id?>">
     <thead>
       <tr>
-        <th><a href="<?php echo get_category_link($category->ID)?>"><i class="fa fa-folder"></i> <?php echo $category->name?></a></th>
+        <th style="border-top: 2pt solid "><a href="<?php echo get_category_link($category->ID)?>"><i class="fa fa-folder"></i> <?php echo $category->name?></a></th>
       </tr>
     </thead>
     <tbody>
@@ -388,3 +387,48 @@ if( !function_exists( 'style_options' )) {
   }
   add_action('parse_request', 'style_options');
 }
+
+// A callback function to add a custom field to our "presenters" taxonomy
+function leros_taxonomy_custom_fields($tag, $taxonomy = '') {
+   // Check for existing taxonomy meta for the term you're editing
+    $t_id = $tag->term_id; // Get the ID of the term you're editing
+    $term_meta = get_option( "taxonomy_term_$t_id" ); // Do the check
+
+
+?>
+
+<tr class="form-field">
+  <th scope="row" valign="top">
+    <label for="color"><?php _e('Color', 'leros'); ?></label>
+  </th>
+  <td>
+    <input type="text" name="term_meta[color]" id="term_meta[color]" size="25" style="width:60%;" value="<?php echo $term_meta['color'] ? $term_meta['color'] : ''; ?>"><br />
+    <span class="description"><?php _e('The Presenter\'s WordPress User ID'); ?></span>
+  </td>
+</tr>
+
+<?php
+}
+
+// Save extra taxonomy fields callback function.
+function leros_save_taxonomy_custom_meta( $term_id ) {
+
+  if ( isset( $_POST['term_meta'] ) ) {
+    $t_id = $term_id;
+    $term_meta = get_option( "taxonomy_$t_id" );
+    $cat_keys = array_keys( $_POST['term_meta'] );
+    foreach ( $cat_keys as $key ) {
+      if ( isset ( $_POST['term_meta'][$key] ) ) {
+        $term_meta[$key] = $_POST['term_meta'][$key];
+      }
+    }
+    // Save the option array.
+    update_option( "taxonomy_$t_id", $term_meta );
+
+  }
+}  
+add_action( 'edited_category', 'leros_save_taxonomy_custom_meta');  
+add_action( 'create_category', 'leros_save_taxonomy_custom_meta');
+
+add_action( 'category_add_form_fields', 'leros_taxonomy_custom_fields');
+add_action( 'category_edit_form_fields', 'leros_taxonomy_custom_fields');
