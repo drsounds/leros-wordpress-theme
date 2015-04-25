@@ -8,7 +8,7 @@ if (get_theme_mod('style') == 'press') {
 if (!is_front_page()) {
 
     ?>
-    <br>
+    <hr>
     <?php
    
     // Get scoops
@@ -79,6 +79,9 @@ if (!is_front_page()) {
 <?php } else {?>
     <div class="col-md-<?php if (get_theme_mod('style') == 'press'):?>6<?php else:?>6<?php endif;?>">
         <div class="box">
+            <div class="box-header">
+                <h5><?php _e('Latest Posts', 'leros')?></h5>
+            </div>
             <div class="box-content">
         <?php /* Start the Loop */
         
@@ -153,19 +156,7 @@ if (!is_front_page()) {
         </div>
     </div>
     <div class="col-md-3">
-         <div class="box">
-            <div class="box-content">
-          <?php
-        if (get_theme_mod('style') == 'press') {
-    if (!is_front_page()):
-         leros_recent_news();
-        leros_recent_news_category(); endif;
-         leros_categories();
-         } else {
-            get_sidebar();
-        }?>
-            </div>
-        </div>
+         <?php get_template_part('sidebar', 'leros');?>
 
     </div>
 </div>

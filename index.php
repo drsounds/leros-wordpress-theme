@@ -77,12 +77,15 @@ endforeach;
 <?php else:?>
     <div class="col-md-<?php if (get_theme_mod('style') == 'press'):?>6<?php else:?>6<?php endif;?>">
         <div class="box">
+            <div class="box-header">
+                <h5><?php _e('Latest Posts', 'leros')?></h5>
+            </div>
             <div class="box-content">
                 <div class="btn-group">
                     <a class="btn btn-default">Test</a>
                     <a class="btn btn-primary">Test</a>
                 </div>
-            </div>
+
         <?php /* Start the Loop */
         
 
@@ -156,23 +159,8 @@ In Time','Go Back in Time &raquo;&raquo;'); ?></p></div>
 </div></div>
     </div>
     <div class="col-md-3">
-        <div class="box">
-            <div class="box-content">
-                <?php
-                if (get_theme_mod('style') == 'press'):
-            if (!is_front_page()):
-                leros_recent_news_category(); endif;
-                 leros_recent_news();   
-                 leros_categories();
-                if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('sidebar-1')) : 
+        <?php get_template_part('sidebar', 'leros');?>
 
-                endif; 
-                else:
-                    get_sidebar();  
-                endif;?>
-
-            </div>
-        </div>
     </div>
 
 <?php endif;?>

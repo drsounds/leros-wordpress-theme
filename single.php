@@ -29,7 +29,8 @@
     <div class="col-md-3" style="border-left: 1px dotted #aaa; min-height: 300pt">
         <div class="box">
             <div class="box-content">
-        <?php
+                <?php get_template_part('sidebar', 'leros');?>
+        <?php /*
         if (get_theme_mod('style') == 'press'):
         $facts = get_post_meta($post->ID, 'leros_facts', TRUE);
         if (!empty($facts)) {
@@ -51,7 +52,7 @@
             endforeach;
             else:
                 get_sidebar();
-            endif;?>
+            endif;*/?>
         </div>
     </div>
     </div>

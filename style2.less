@@ -290,7 +290,7 @@ body {
 .navbar-sub .menu, .navbar-sub a {
     color: black; 
 }
-.navbar, .scoop .title {
+.navbar, .scoop .title, .box-header {
     background: rgb(30,87,153); /* Old browsers */
     background: -moz-linear-gradient(left, @brand-primary 0%, @brand-secondary 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, right top, color-stop(0%,@brand-primary), color-stop(100%,@brand-secondary)); /* Chrome,Safari4+ */
@@ -345,4 +345,8 @@ body {
 .mitem-active a {
     color: white;
     text-shadow: 0px 1px 0px black;
+}
+hr {
+    border: none;
+    border-top: 1px solid fade(darken(@brand-primary, 20%), 11%);
 }

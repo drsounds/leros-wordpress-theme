@@ -28,7 +28,7 @@
         </div>
         <script>
         jQuery(window).scroll(function () {
-            jQuery('#header_layer_1').css({'top': (jQuery(window).scrollTop() * 0.5 + 100)  + 'px'});
+            jQuery('#header_layer_1').css({'top': (jQuery(window).scrollTop() * 0.9 + 100)  + 'px'});
             var scrollTop = jQuery(window).scrollTop();
             var opacity = 0;
             var range = 300;

@@ -176,12 +176,13 @@ function leros_recent_news_category() {
   $categories = get_the_category();
   $category = $categories[0];
   ?>
-  <table width="100%" class="feed">
-    <thead>
-      <tr>
-        <th><?php echo $category->name?></th>
-      </tr>
-    </thead>
+  <div class="box">
+    <div class="box-header">
+      <?php echo $category->name?>
+    </div>
+    <div class="box-content">
+      <table width="100%" class="feed">
+    
     <tbody>
   <?php
   $q = new WP_Query();
@@ -190,20 +191,20 @@ function leros_recent_news_category() {
   ?><tr><td><?php format_date() ?><br><a href="<?php echo the_permalink()?>"><?php the_title();?></a></td></tr><?php
   endwhile;
   endif;
-  ?></tbody></table><?php
+  ?></tbody></table></div></div><?php
 }
 
 function leros_recent_news() {
   $categories = get_the_category();
   $category = $categories[0];
   ?>   
+  <div class="box">
+    <div class="box-header">
+      <i class="fa fa-clock-o"></i> <?php echo __('Recent posts', 'leros');?>
+    </div>
+    <div class="box-content">
   <table width="100%" class="feed">
-    <thead>
-      <tr>
-        <th><i class="fa fa-clock-o"></i> <?php echo __('Recent posts', 'leros');?></th>
-      </tr>
-    </thead>
-    <tbody>
+        <tbody>
   <?php
   $q = new WP_Query(array('posts_per_page' => 5));
   $q->query(array('posts_per_page' => 5));
@@ -211,7 +212,7 @@ function leros_recent_news() {
   ?><tr><td><?php format_date() ?><br><a href="<?php echo the_permalink()?>"><?php the_title();?></a></td></tr><?php
   endwhile;
   endif;
-  ?></tbody></table><?php
+  ?></tbody></table></div></div><?php
 }
 
 function format_date() {
@@ -228,12 +229,13 @@ function format_date() {
 
 function leros_tag_feed($tag) {
   ?>   
+  <div class="box">
+    <div class="box-header">
+      <i class="fa fa-tag"></i> <a href="<?php echo get_tag_link($tag->ID)?>"><?php echo __($tag->name, 'leros');?></a>
+    </div>
+    <div class="box-content">
   <table width="100%" class="feed">
-    <thead>
-      <tr>
-        <th><i class="fa fa-tag"></i> <a href="<?php echo get_tag_link($tag->ID)?>"><?php echo __($tag->name, 'leros');?></a></th>
-      </tr>
-    </thead>
+    
     <tbody>
   <?php
   $q = new WP_Query(array('tag' => $tag->name, 'posts_per_page' => 5));
@@ -242,18 +244,19 @@ function leros_tag_feed($tag) {
   ?><tr><td><?php format_date() ?><br><a href="<?php echo the_permalink()?>"><?php the_title();?></a></td></tr><?php
   endwhile;
   endif;
-  ?></tbody></table><?php
+  ?></tbody></table></div></div><?php
 }
 
 
 function leros_category_feed($category) {
   ?>  
+  <div class="box">
+    <div class="box-header">
+      <a href="<?php echo get_category_link($category->ID)?>"><i class="fa fa-folder"></i> <?php echo $category->name?></a>
+    </div>
+    <div class="box-content">
   <table width="100%" class="feed feed-<?php echo $category->term_id?>">
-    <thead>
-      <tr>
-        <th style="border-top: 2pt solid "><a href="<?php echo get_category_link($category->ID)?>"><i class="fa fa-folder"></i> <?php echo $category->name?></a></th>
-      </tr>
-    </thead>
+    
     <tbody>
   <?php
   $q = new WP_Query();
@@ -262,7 +265,7 @@ function leros_category_feed($category) {
   ?><tr><td><?php format_date() ?><br><a href="<?php echo the_permalink()?>"><?php the_title();?></a></td></tr><?php
   endwhile;
   endif;
-  ?></tbody></table><?php
+  ?></tbody></table></div></div><?php
 }
 
 
@@ -270,12 +273,13 @@ function leros_pages() {
   $categories = get_the_category();
   $category = $categories[0];
   ?>   
+  <div class="box">
+    <div class="box-header">
+      <?php echo __('Pages', 'leros');?>
+    </div>
+    <div class="box-content">
   <table width="100%" class="feed">
-    <thead>
-      <tr>
-        <th><?php echo __('Pages', 'leros');?></th>
-      </tr>
-    </thead>
+    
     <tbody>
   <?php
   $q = new WP_Query(array('post_type' => 'page', 'posts_per_page' => 5));
@@ -284,23 +288,23 @@ function leros_pages() {
   ?><tr><td><?php format_date() ?><br><a href="<?php echo the_permalink()?>"><?php the_title();?></a></td></tr><?php
   endwhile;
   endif;
-  ?></tbody></table><?php
+  ?></tbody></table></div></div><?php
 }
 function leros_categories() {
   $categories = get_categories();
   ?>   
-  <table width="100%" class="feed">
-    <thead>
-      <tr>
-        <th><?php echo __('Categories', 'leros');?></th>
-      </tr>
-    </thead>
-    <tbody>
+  <div class="box">
+    <div class="box-header">
+      <?php echo __('Categories', 'leros');?>
+    </div>
+    <div class="box-content">
+      <table width="100%" class="feed">
+      <tbody>
   <?php
   foreach($categories as $category):
   ?><tr><td><a href="<?php echo get_category_link($category->id)?>"><?php echo $category->name;?></a></td></tr><?php
   endforeach;
-  ?></tbody></table><?php
+  ?></tbody></table></div></div><?php
 }
 
 function leros_register_menus() {
