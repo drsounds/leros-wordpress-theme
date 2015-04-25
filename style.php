@@ -10,6 +10,7 @@ fclose($fil);
 
 $lessc = new lessc;
 $lessc->setVariables(array('brand-primary' => get_theme_mod('primary_color')));
+$lessc->setVariables(array('brand-secondary' => get_theme_mod('secondary_color')));
 header('Content-type: text/css');
 echo $lessc->compile($less);
 

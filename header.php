@@ -22,7 +22,7 @@
         <?php wp_head(); ?>
     </head>
     <body style="">
-        <div class="background" style="background-image: url('<?php echo get_theme_mod('background_image_url')?>'); ">
+        <div class="background" style="">
         </div>
          <div class="background-2" style=" ">
         </div>

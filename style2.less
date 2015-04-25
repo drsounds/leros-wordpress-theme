@@ -64,6 +64,14 @@ article p {
     height: 100%;
     opacity: 0.25;
     -webkit-filter: blur(10px);
+    background: rgb(30,87,153); /* Old browsers */
+    background: -moz-linear-gradient(left, @brand-primary 0%, @brand-secondary 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,@brand-primary), color-stop(100%,@brand-secondary)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, @brand-primary 0%,@brand-secondary 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, @brand-primary 0%,@brand-secondary 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, @brand-primary 0%,@brand-secondary 100%); /* IE10+ */
+    background: linear-gradient(to right, @brand-primary 0%,@brand-secondary 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 */
 }
 .background-2 {
     z-index: -1;
@@ -82,13 +90,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 }
 .box {
     background-color: rgba(255, 255, 255, .6);
-    box-shadow: 0px 4px 11pt rgba(0, 0, 0, .1);
 }
 .box-content {
     padding: 10pt;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
 }
 body {
-    background-color: saturate(lighten(@brand-primary, 39%), -30%);
+    background-color: rgba(244, 244, 244);
     font-family: "Roboto Condensed";
     font-weight: 300;
     font-size: 13pt;
@@ -250,16 +258,20 @@ body {
     background-size: cover;
 }
 
+
+
 .navbar, .navbar-sub {
-    background-color: fade(@brand-primary, 80%);
-    box-shadow: 0px 2px 2pt rgba(0, 0, 0, .1);
+    /*background-color: fade(@brand-primary, 80%);*/
+    
     position: fixed;
     width: 100%;
     z-index: 1000;
 }
 .navbar-sub {
-    background-color: black;
+    background: none;
+    background-color: white;
     top: 60pt;
+    box-shadow: 0px 1px 2pt rgba(0, 0, 0, 0.1);
 }
 .navbar .menu li, .navbar-sub li {
     font-size: 20pt;
@@ -274,5 +286,15 @@ body {
 }
 
 .navbar-sub .menu, .navbar-sub a {
-    color: white; 
+    color: black; 
+}
+.navbar, .scoop .title {
+    background: rgb(30,87,153); /* Old browsers */
+    background: -moz-linear-gradient(left, @brand-primary 0%, @brand-secondary 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,@brand-primary), color-stop(100%,@brand-secondary)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, @brand-primary 0%,@brand-secondary 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, @brand-primary 0%,@brand-secondary 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, @brand-primary 0%,@brand-secondary 100%); /* IE10+ */
+    background: linear-gradient(to right, @brand-primary 0%,@brand-secondary 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 */
 }  
