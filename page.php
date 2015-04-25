@@ -1,6 +1,6 @@
 <?php get_header();?>
 <div class="row">
-    <div class="col-md-<?php if (get_theme_mod('style') == 'press'):    ?>5<?php else:?>8<?php endif;?>">
+    <div class="col-md-<?php if (get_theme_mod('style') == 'press'):    ?>6<?php else:?>8<?php endif;?>">
 
         <div class="box">
             <div class="box-header">&nbsp;</div>
@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-<?php if (get_theme_mod('style') == 'press'):?>7<?php else:?>4<?php endif;?>">
+    <div class="col-md-<?php if (get_theme_mod('style') == 'press'):?>4<?php else:?>4<?php endif;?>">
         <div class="box">
             <div class="box-header">&nbsp;</div>
             <div class="box-content">
