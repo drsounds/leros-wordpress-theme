@@ -7,6 +7,7 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="1024mm"
@@ -20,7 +21,29 @@
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
-     id="defs4" />
+     id="defs4">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4142">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop4144" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop4146" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4142"
+       id="linearGradient4148"
+       x1="2737.6021"
+       y1="-1307.7943"
+       x2="2737.6021"
+       y2="772.20569"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -58,7 +81,7 @@
      id="layer1"
      transform="translate(0,1668.8976)">
     <path
-       style="fill:#ffffff;fill-opacity:0.49650352;fill-rule:evenodd;stroke:none;stroke-width:4.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:url(#linearGradient4148);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:4.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 3628.2513,-1183.7574 c 0,0 -180.8682,-124.3644 -468.6669,12.7554 0,0 -70.3509,-318.8834 -722.6944,-200.8966 0,0 -831.4181,-609.0672 -1407.0157,89.2874 0,0 -390.12692,-102.0427 -633.15689,124.3644 0,0 -89.53749,-146.6863 -447.686777,-70.1544 l 0,2310.7722 3676.329967,0 z"
        id="path4264"
        inkscape:connector-curvature="0"

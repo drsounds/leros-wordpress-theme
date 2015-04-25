@@ -1,6 +1,8 @@
 <?php get_header();?>
 <div class="row">
     <div class="col-md-6">
+        <div class="box">
+            <div class="box-content">
         <?php /* Start the Loop */ ?>
         <?php while ( have_posts() ) : the_post(); ?>
         <article>
@@ -10,8 +12,12 @@
         <hr>
         <?php comments_template(); ?>
         <?php endwhile; ?>
+            </div>
+        </div>
     </div>
     <div class="col-md-4">
+        <div class="box">
+            <div class="box-content">
          <?php
         if (get_theme_mod('style') == 'press'):
          leros_recent_news();
@@ -19,6 +25,8 @@
          else:
             get_sidebar();
         endif;?>
+            </div>
+        </div>
     </div>
     
 </div>

@@ -1,7 +1,9 @@
 <?php get_header();?>
         <?php while ( have_posts() ) : the_post(); ?>
 <div class="row">
-    <div class="col-md-<?php if (get_theme_mod('style') == 'press'):?>4<?php else:?>6<?php endif;?>">
+    <div class="col-md-<?php if (get_theme_mod('style') == 'press'):?>6<?php else:?>6<?php endif;?>">
+        <div class="box">
+            <div class="box-content">
         <?php /* Start the Loop */ ?>
         <article>
 
@@ -22,7 +24,11 @@
         <hr>
         <?php comments_template(); ?>
     </div>
+</div>
+    </div>
     <div class="col-md-3" style="border-left: 1px dotted #aaa; min-height: 300pt">
+        <div class="box">
+            <div class="box-content">
         <?php
         if (get_theme_mod('style') == 'press'):
         $facts = get_post_meta($post->ID, 'leros_facts', TRUE);
@@ -46,7 +52,8 @@
             else:
                 get_sidebar();
             endif;?>
-        
+        </div>
+    </div>
     </div>
     
 </div>

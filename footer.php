@@ -8,7 +8,7 @@ if (get_theme_mod('style') == 'press') {
 if (!is_front_page()) {
 
     ?>
-    <div class="divider"></div>
+    <br>
     <?php
    
     // Get scoops
@@ -77,7 +77,9 @@ if (!is_front_page()) {
 </div>
 <div class="glazz" style="background-image: url('<?php echo $background_image?>')?>"></div>
 <?php } else {?>
-    <div class="col-md-<?php if (get_theme_mod('style') == 'press'):?>5<?php else:?>6<?php endif;?>">
+    <div class="col-md-<?php if (get_theme_mod('style') == 'press'):?>6<?php else:?>6<?php endif;?>">
+        <div class="box">
+            <div class="box-content">
         <?php /* Start the Loop */
         
 
@@ -147,9 +149,12 @@ if (!is_front_page()) {
          }
          ?>
 
+            </div>
+        </div>
     </div>
     <div class="col-md-3">
-         
+         <div class="box">
+            <div class="box-content">
           <?php
         if (get_theme_mod('style') == 'press') {
     if (!is_front_page()):
@@ -159,6 +164,8 @@ if (!is_front_page()) {
          } else {
             get_sidebar();
         }?>
+            </div>
+        </div>
 
     </div>
 </div>

@@ -53,16 +53,47 @@ article p {
     padding-top: 70pt;
     text-align: center;
 }
+.background, .background-2 {
+    z-index: -2;
+    background-size: 100%; 
+    background-attachment: fixed;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 0.25;
+    -webkit-filter: blur(10px);
+}
+.background-2 {
+    z-index: -1;
+    background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+}
+
 #body {
     background-attachment: fixed;
     background-size: cover;
 }
+.box {
+    background-color: rgba(255, 255, 255, .6);
+    box-shadow: 0px 4px 11pt rgba(0, 0, 0, .1);
+}
+.box-content {
+    padding: 10pt;
+}
 body {
-    background-color: #2196F3;
+    background-color: saturate(lighten(@brand-primary, 39%), -30%);
     font-family: "Roboto Condensed";
     font-weight: 300;
     font-size: 13pt;
     color: #111;
+    text-shadow: 0px 1px 0px white;
 }
 article h3 {
     font-size: 40pt;
@@ -83,8 +114,6 @@ h3 a {
     text-align: center;
 }
 .content {
-    padding-top: 55pt;
-    background-color: white;
 }
 a {
     color: @brand-primary;
@@ -122,10 +151,6 @@ a {
 .mitem {
     float: left;
     margin-right: 10pt;
-    list-style: none;  
-    font-size: 11pt;
-    height: 20pt;
-    z-index: 0;
 }
 .menu_item a, .page_item a {
     color: @brand-primary;
@@ -183,10 +208,7 @@ a {
 }
 
 .category_item a {
-    background-color: #eee;
-    color: black;
-    display: block;
-    padding: 5pt;
+    font-size: 10pt;
 }
 /*
 @-webkit-keyframes vibrate {
@@ -227,3 +249,30 @@ body {
     height: 320pt;
     background-size: cover;
 }
+
+.navbar, .navbar-sub {
+    background-color: fade(@brand-primary, 80%);
+    box-shadow: 0px 2px 2pt rgba(0, 0, 0, .1);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+.navbar-sub {
+    background-color: black;
+    top: 60pt;
+}
+.navbar .menu li, .navbar-sub li {
+    font-size: 20pt;
+    list-style: none;
+
+}
+.navbar .menu a {
+    color: white;
+}
+.navbar a {
+    color: white;
+}
+
+.navbar-sub .menu, .navbar-sub a {
+    color: white; 
+}  

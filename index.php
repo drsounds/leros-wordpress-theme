@@ -75,7 +75,9 @@ endforeach;
 </div>
 <div class="glazz" style="background-image: url('<?php echo $background_image?>')?>"></div>
 <?php else:?>
-    <div class="col-md-<?php if (get_theme_mod('style') == 'press'):?>5<?php else:?>6<?php endif;?>">
+    <div class="col-md-<?php if (get_theme_mod('style') == 'press'):?>6<?php else:?>6<?php endif;?>">
+        <div class="box">
+            <div class="box-content">
         <?php /* Start the Loop */
         
 
@@ -146,20 +148,26 @@ endforeach;
             endwhile;?>
             <div class="navigation"><p><?php posts_nav_link('&#8734;','&laquo;&laquo; Go Forward 
 In Time','Go Back in Time &raquo;&raquo;'); ?></p></div>
+</div></div>
     </div>
     <div class="col-md-3">
-        <?php
-        if (get_theme_mod('style') == 'press'):
-    if (!is_front_page()):
-        leros_recent_news_category(); endif;
-         leros_recent_news();   
-         leros_categories();
-        if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('sidebar-1')) : 
+        <div class="box">
+            <div class="box-content">
+                <?php
+                if (get_theme_mod('style') == 'press'):
+            if (!is_front_page()):
+                leros_recent_news_category(); endif;
+                 leros_recent_news();   
+                 leros_categories();
+                if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('sidebar-1')) : 
 
-        endif; 
-        else:
-            get_sidebar();  
-        endif;?>
+                endif; 
+                else:
+                    get_sidebar();  
+                endif;?>
+
+            </div>
+        </div>
     </div>
 
 <?php endif;?>
