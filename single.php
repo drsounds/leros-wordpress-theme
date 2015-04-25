@@ -3,6 +3,9 @@
 <div class="row">
     <div class="col-md-<?php if (get_theme_mod('style') == 'press'):?>6<?php else:?>6<?php endif;?>">
         <div class="box">
+            <div class="box-header">
+                <h5>&nbsp;</h5>
+            </div>
             <div class="box-content">
         <?php /* Start the Loop */ ?>
         <article>

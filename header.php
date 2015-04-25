@@ -75,11 +75,10 @@
                          <?php
                         $current_category = get_the_category();
                         $current_category = $current_category[0];
-                        var_dump($current_category->cat_ID);
                         $categories = get_categories(array('parent' => 0));
                         foreach($categories as $c):
 
-                            $category = get_category($c); var_dump($category->cat_ID);?>
+                            $category = get_category($c); ?>
                             
                         <li class="mitem <?php if ($current_category->cat_ID == $category->cat_ID):?>mitem-active<?php endif;?>"><a href="<?php echo get_category_link($category->cat_ID)?>"><?php echo $category->name?></a></lI>
                         <?php endforeach;?>
