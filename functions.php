@@ -178,7 +178,7 @@ function leros_recent_news_category() {
   ?>
   <div class="box">
     <div class="box-header">
-      <?php echo $category->name?>
+      <i class="fa fa-clock-o"></i> <?php echo _e('Recent', 'leros')?> <?php echo $category->name?>
     </div>
     <div class="box-content">
       <table width="100%" class="feed">
@@ -252,7 +252,7 @@ function leros_category_feed($category) {
   ?>  
   <div class="box">
     <div class="box-header">
-      <a href="<?php echo get_category_link($category->ID)?>"><i class="fa fa-folder"></i> <?php echo $category->name?></a>
+      <a href="<?php echo get_category_link($category->ID)?>"><i class="fa fa-clock-o"></i><?php _e('Recent ', 'leros')?> <?php echo $category->name?></a>
     </div>
     <div class="box-content">
   <table width="100%" class="feed feed-<?php echo $category->term_id?>">
