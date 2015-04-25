@@ -78,6 +78,7 @@ endforeach;
     <div class="col-md-<?php if (get_theme_mod('style') == 'press'):?>6<?php else:?>6<?php endif;?>">
         <div class="box">
             <div class="box-content">
+                <a class="btn btn-primary">Test</a>
         <?php /* Start the Loop */
         
 

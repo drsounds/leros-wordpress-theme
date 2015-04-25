@@ -21,14 +21,21 @@ function leros_customize_register( $wp_customize ) {
     $wp_customize->add_setting(
       'primary_color',
       array(
-        'default'   => '#880000',
+        'default'   => '#009ece',
         'transport' => 'postMessage'
       )
     );
     $wp_customize->add_setting(
       'secondary_color',
       array(
-        'default'   => '#008800',
+        'default'   => '#00a398',
+        'transport' => 'postMessage'
+      )
+    );
+    $wp_customize->add_setting(
+      'tertiary_color',
+      array(
+        'default'   => '#00a398',
         'transport' => 'postMessage'
       )
     );
@@ -79,6 +86,16 @@ function leros_customize_register( $wp_customize ) {
         )
         )
       );
+      $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+        $wp_customize,
+        'tertiary_color',
+        array(
+            'label' => __('Tertiary color', 'leros'),
+            'section' => 'leros_options',
+        )
+        )
+    );
 }
 
 /**
