@@ -1,7 +1,10 @@
 <?php get_header();?>
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-<?php if (get_theme_mod('style') == 'press'):    ?>5<?php else:?>8<?php endif;?>">
+
         <div class="box">
+            <div class="box-header">&nbsp;</div>
+
             <div class="box-content">
         <?php /* Start the Loop */ ?>
         <?php while ( have_posts() ) : the_post(); ?>
@@ -15,8 +18,9 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-<?php if (get_theme_mod('style') == 'press'):?>7<?php else:?>4<?php endif;?>">
         <div class="box">
+            <div class="box-header">&nbsp;</div>
             <div class="box-content">
          <?php
         if (get_theme_mod('style') == 'press'):

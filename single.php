@@ -1,7 +1,7 @@
 <?php get_header();?>
         <?php while ( have_posts() ) : the_post(); ?>
 <div class="row">
-    <div class="col-md-<?php if (get_theme_mod('style') == 'press'):?>6<?php else:?>6<?php endif;?>">
+    <div class="col-md-<?php if (get_theme_mod('style') == 'press'):?>6<?php else:?>8<?php endif;?>">
         <div class="box">
             <div class="box-header">
                 <h5>&nbsp;</h5>
@@ -29,7 +29,7 @@
     </div>
 </div>
     </div>
-    <div class="col-md-3" style="border-left: 1px dotted #aaa; min-height: 300pt">
+    <div class="col-md-4" style="min-height: 300pt">
         
                 <?php get_template_part('sidebar', 'leros');?>
         <?php /*

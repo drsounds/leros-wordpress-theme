@@ -75,7 +75,7 @@ endforeach;
 </div>
 <div class="glazz" style="background-image: url('<?php echo $background_image?>')?>"></div>
 <?php else:?>
-    <div class="col-md-<?php if (get_theme_mod('style') == 'press'):?>6<?php else:?>6<?php endif;?>">
+    <div class="col-md-<?php if (get_theme_mod('style') == 'press'):?>6<?php else:?>8<?php endif;?>">
         <div class="box">
             <div class="box-header">
                 <h5><?php _e('Latest Posts', 'leros')?></h5>
@@ -158,7 +158,7 @@ endforeach;
 In Time','Go Back in Time &raquo;&raquo;'); ?></p></div>
 </div></div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
         <?php get_template_part('sidebar', 'leros');?>
 
     </div>
