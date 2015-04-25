@@ -2,7 +2,15 @@
 
 require_once 'metaboxes.php';
 function leros_customize_register( $wp_customize ) {
-    
+  $wp_customize->add_section(
+    'leros_options',
+    array(
+      'title' => __( 'Leros settings', 'leros' ),
+      'priority' => 100,
+      'capability' => 'edit_theme_options',
+      'description' => __('Change theme related settings', 'leros'),
+    )
+  );
    $wp_customize->add_setting(
       'background_image_url',
       array(
@@ -22,7 +30,7 @@ function leros_customize_register( $wp_customize ) {
             'style',
             array(
                 'label' => __('Style', 'leros'),
-                'section' => 'title_tagline',
+                'section' => 'leros_options',
                 'type' => 'url'
             )
         
@@ -34,11 +42,84 @@ function leros_customize_register( $wp_customize ) {
             'background_image_url',
             array(
                 'label' => __('Background image URL', 'leros'),
-                'section' => 'title_tagline',
-                'type' => 'url'
-            )
+                'section' => 'leros_options',
+           )
         )
     );
+}
+
+/**
+ * Newsfeed widget
+ **/
+class Leros_NewsFeed_Widget extends WP_Widget {
+
+  /**
+   * Sets up the widgets name etc
+   */
+  public function __construct() {
+    // widget actual processes
+    parent::__construct(
+      'leros_newsfeed_widget', // Base ID
+      __( 'Newsfeed Widget', 'leros' ), // Name
+      array( 'description' => __( 'A newsfeed widget', 'leros' ), ) // Args
+    );
+  }
+
+  /**
+   * Outputs the content of the widget
+   *
+   * @param array $args
+   * @param array $instance
+   */
+  public function widget( $args, $instance ) {
+    echo $args['before_widget'];
+    // outputs the content of the widget
+    $id = $instance['id'];
+
+    $type = $instance['type'];
+    if (!empty($type) && !empty($id)) {
+      if ($type == 'category') {
+        $category = get_category(get_category_by_slug($id));
+        leros_category_feed($category);
+      }
+      if ($type == 'tag') {
+        $tag = get_tag(get_term_by('name', $id, 'post_tag'));
+        leros_tag_feed($tag);
+      }
+    }
+      echo $args['after_widget'];
+  }
+
+  /**
+   * Outputs the options form on admin
+   *
+   * @param array $instance The widget options
+   */
+  public function form( $instance ) {
+    // outputs the options form on admin
+    ?>
+    <input type="radio" id="<?php echo $this->get_field_id('type')?>" name="<?php echo $this->get_field_name('type')?>" value="category" checked><?php echo __('Category' , 'leros');?><br>
+    <input type="radio" id="<?php echo $this->get_field_id('type')?>" name="<?php echo $this->get_field_name('type')?>" value="tag"><?php echo __('Tag' , 'leros');?><br>
+    <label for="id"><?php echo __('Category/Tag', 'leros');?></label><br>
+    <input class="widefat" id="<?php echo $this->get_field_id('id')?>" name="<?php echo $this->get_field_name('id')?>" value="<?php echo esc_attr( $instance['id'] )?>"><?php
+
+
+  }
+
+  /**
+   * Processing widget options on save
+   *
+   * @param array $new_instance The new options
+   * @param array $old_instance The previous options
+   */
+  public function update( $new_instance, $old_instance ) {
+    // processes widget options to be saved
+    $instance = $old_instance;  
+    $instance['category'] = ( ! empty( $new_instance['category'] ) ) ? strip_tags( $new_instance['category'] ) : '';
+    $instance['type'] = ( ! empty( $new_instance['type'] ) ) ? strip_tags( $new_instance['type'] ) : '';
+    $instance['id'] = ( ! empty( $new_instance['id'] ) ) ? strip_tags( $new_instance['id'] ) : '';
+    return $instance;
+  }
 }
 
 function leros_recent_news_category() {
@@ -179,6 +260,17 @@ function leros_register_menus() {
       'extra-menu' => __( 'Extra Menu' )
     )
   );
+  register_post_type('scoop', array(
+    'labels' => array(
+      'name' => __('Scoops', 'leros'),
+      'singular_name' => __('Scoop', 'leros'),
+    ),
+    'description' => __('', 'leros'),
+    'public' => true,
+    'menu_position' => 5,
+    'supports' => array('title', 'editor'),
+    'has_archive' => true
+  ));
 }
 add_action( 'init', 'leros_register_menus' );
 
@@ -191,13 +283,14 @@ add_action( 'customize_register', 'leros_customize_register' );
 function leros_widgets_init() {
 
   register_sidebar( array(
-    'name'          => 'Home right sidebar',
-    'id'            => 'sidebar-1 ',
+    'name'          => 'Right Sidebar',
+    'id'            => 'sidebar-1',
     'before_widget' => '<div>',
     'after_widget'  => '</div>',
     'before_title'  => '<h2 class="rounded">',
     'after_title'   => '</h2>',
   ) );
+  register_widget("Leros_NewsFeed_Widget");
 
 }
 add_action( 'widgets_init', 'leros_widgets_init' );

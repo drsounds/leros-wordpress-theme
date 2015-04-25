@@ -44,7 +44,6 @@
                 leros_category_feed($category);
             endforeach;
             else:
-         leros_recent_news();
                 get_sidebar();
             endif;?>
         

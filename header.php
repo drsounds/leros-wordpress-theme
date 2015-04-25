@@ -14,7 +14,7 @@
 <?php wp_enqueue_script('jquery'); ?>
         <?php wp_head(); ?>
     </head>
-    <body style="background-image: url('<?php echo get_theme_mod('background_image_url')?>'); background-position-y: -200pt; background-image: url('/wp-content/themes/leros/images/ct_blurred.jpg'); background-size: cover; background-attachment: fixed">
+    <body style="background-image: url('<?php echo get_theme_mod('background_image_url')?>'); background-position-y: -200pt; background-image: url('<?php echo get_theme_mod('background_image_url')?>'); background-size: cover; background-attachment: fixed">
         <div style="display: none" id="bg_normal" style="z-index: -10; position: fixed; left: 0px; top: 0px; width:100%; height: 100%; background-image: url('<?php echo get_theme_mod('background_image_url')?>'); background-position-y: -200pt; background-image: url('/wp-content/themes/leros/images/ct.jpg'); background-size: cover; background-attachment: fixed"></div>
 
         
@@ -25,13 +25,22 @@
             var opacity = 0;
             var range = 300;
             if (scrollTop < range) {
-
+                jQuery("body").css({'background-position': '0px -' + (200 + scrollTop * 0.1) + 'pt'});
               // jQuery('#bg_blurred').css({'opacity': (scrollTop / range)});
             } else {
               //  jQuery('#bg_blurred').css({'opacity': 1});
 
             }
         });
+        /*var t = false;
+        setInterval(function () {
+            if (t) {
+                jQuery('body').css({'background-position-x': '0px'});
+            } else {
+                jQuery('body').css({'background-position-x': '1px'});
+            }
+            t = !t;
+        }, 0.005);*/
         </script>
         <div class="body">
             <div id="span"></div>

@@ -7,6 +7,22 @@ $post_types = array(
                 'type' => 'text'
             )
         )
+    ),
+    'scoop' => array(
+        'meta_fields' => array(
+            'priority' => array(
+                'title' => 'Priority',
+                'type' => 'number'
+            ),
+            'color' => array(
+                'title' => 'Color',
+            ),
+            'tag' => array(
+                'title' => 'tag',
+                
+            )
+
+        )
     )
 );
 /**
@@ -96,7 +112,7 @@ function leros_meta_box_callback( $post ) {
  */
 function leros_add_meta_box() {
 
-    $screens = array( 'post' );
+    $screens = array( 'post', 'scoop' );
 
     foreach ( $screens as $screen ) {
 
