@@ -19,6 +19,13 @@ function leros_customize_register( $wp_customize ) {
       )
     );
    $wp_customize->add_setting(
+      'primary_color',
+      array(
+        'default'   => '#880000',
+        'transport' => 'postMessage'
+      )
+    );
+   $wp_customize->add_setting(
       'style',
       array(
         'default'   => 'normal',
@@ -45,6 +52,13 @@ function leros_customize_register( $wp_customize ) {
                 'section' => 'leros_options',
            )
         )
+    );
+    $wp_customize->add_control(
+      'primary_color',
+      array(
+          'label' => __('Primary color', 'leros'),
+          'section' => 'leros_options',
+     )
     );
 }
 
@@ -134,8 +148,8 @@ function leros_recent_news_category() {
     </thead>
     <tbody>
   <?php
-  $q = new WP_Query(array('posts_per_page' => 5, 'category' => $category->id));
-  $q->query(array('category' => $category->id, 'posts_per_page' => 5));
+  $q = new WP_Query();
+  $q->query(array('cat' => $category->cat_ID, 'posts_per_page' => 5));
   if ($q->have_posts()): while($q->have_posts()): $q->the_post();
   ?><tr><td><?php format_date() ?><br><a href="<?php echo the_permalink()?>"><?php the_title();?></a></td></tr><?php
   endwhile;
@@ -197,6 +211,7 @@ function leros_tag_feed($tag) {
 
 
 function leros_category_feed($category) {
+
   ?>   
   <table width="100%" class="feed">
     <thead>

@@ -103,8 +103,10 @@ a {
 .mitem {
     float: left;
     margin-right: 10pt;
-    
-    font-size: 13pt;
+    list-style: none;  
+    font-size: 11pt;
+    height: 20pt;
+    z-index: 0;
 }
 .menu_item a, .page_item a {
     color: @brand-primary;
@@ -150,8 +152,12 @@ a {
 .cmenu {
     background-color: @brand-primary;
     color: white;
-  
-    height: 18pt;
+    padding: 15pt;
+    box-sizing: border-box;
+    margin-top: 0pt;
+    line-height: 10pt;
+    height: 10pt;
+    z-index: 100000;
 }
 .cmenu a {
     color: white;

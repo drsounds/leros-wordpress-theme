@@ -5,6 +5,10 @@ $post_types = array(
             'facts' => array(
                 'title' => 'Facts',
                 'type' => 'text'
+            ),
+            'live_duration' => array(
+                'title' => __('Live duration', 'leros'),
+                'type' => 'number'
             )
         )
     ),
@@ -19,7 +23,7 @@ $post_types = array(
             ),
             'tag' => array(
                 'title' => 'tag',
-                
+
             )
 
         )
