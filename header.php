@@ -6,9 +6,16 @@
         <link rel="profile" href="http://gmpg.org/xfn/11" />
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" type="text/css" media="screen" />
+
+        
         <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/style.php" type="text/css" media="screen" />
+        <?php $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
+        if (!$isiPad):?>
         <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory')?>/mobile.css" media="screen and (max-width: 768px)">
         <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory')?>/mobile.css" media="screen and (max-device-width: 768px)">
+    <?php else:?>
+    <meta name="viewport" content="width=1280, initial-scale=1">
+<?php endif;?>
         <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
         <?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); ?>
 <?php wp_enqueue_script('jquery'); ?>
@@ -46,25 +53,29 @@
             <div id="span"></div>
             <div class="header-layered" style="height:300pt;">
              <img id="header_layer_1" style="width:100%; position: absolute; top: 100px; z-index:-1" src="<?php bloginfo('stylesheet_directory'); ?>/images/header_layer_1.svg">
-                <img id="header_layer_2" style="width:100%; position: absolute; top: 32%; z-index:-1" src="<?php bloginfo('stylesheet_directory'); ?>/images/header_layer_2.svg">
-            </div>
+               </div>
             <div id="title_row" style="">
-                <div class="row" style="margin-top: 0pt">
-                  
-                    <div class="col-md-12" id="title" style="text-align: center">
-                        <a id="toggler" class="fa fa-bars" style="float: left;font-size:50pt; color: white" onclick="toggleMenu(event)" href="javascript:void(event)"></a>
-                        <h1><a href="<?php echo get_home_url();?>"><?php bloginfo('name');?></a></h1>
-                        <p><?php bloginfo('description');?></p>
-                        
+                <div class="container<?php if (get_theme_mod('style') == 'press'):?>-fluid<?php endif;?>">
+                    <div class="row" style="margin-top: 0pt">
+                      
+                        <div class="col-md-12" id="title" style="text-align: center">
+                            <a id="toggler" class="fa fa-bars" style="float: left;font-size:50pt; color: white" onclick="toggleMenu(event)" href="javascript:void(event)"></a>
+                            <h1><a href="<?php echo get_home_url();?>"><?php bloginfo('name');?></a></h1>
+                            <p><?php bloginfo('description');?></p>
+                            <?php if (get_theme_mod('style') == 'blog'):
+                             wp_nav_menu('header-menu');
+                             endif;
+                             ?>
+
+                        </div>
 
                     </div>
-
                 </div>
             </div>
             <?php if (get_theme_mod('style') == 'press'):
                                         ?>
-            <div class="container">
-                <div class="menu">
+            <div class="<?php if (get_theme_mod('style') != 'press'):?>container<?php endif;?>">
+                <div class="menu container-fluid">
                     <ul >
                         <li class="mitem category_item"><a href="/"><?php echo __('Home', 'leros')?></a></lI>
                         
@@ -78,7 +89,7 @@
                     </ul>
                     
                 </div><br>
-                <div class="menu cmenu">
+                <div class="menu cmenu container-fluid">
                     <ul ><?php
                         $current_category = get_the_category();
                         $categories = array_reverse($current_category);
@@ -90,16 +101,12 @@
                         <li class="mitem"><a href="<?php echo get_category_link($category->cat_ID)?>"><?php echo $category->name?></a></lI>
                         <?php endforeach;?>
                     </ul>
-                    
-                </div><br>
+                   
             </div>
-            <?php
-                        endif;?>
-            <div class="container">            
-                    
-               <div class="row">
-                </div>
-            </div>
+           
+            
         </div>
+             <?php
+                        endif;?>
         <div class="content">
-        <div class="container">
+        <div class="container<?php if (get_theme_mod('style') == 'press'):?>-fluid<?php endif;?>">

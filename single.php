@@ -1,7 +1,7 @@
 <?php get_header();?>
         <?php while ( have_posts() ) : the_post(); ?>
 <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-<?php if (get_theme_mod('style') == 'press'):?>4<?php else:?>6<?php endif;?>">
         <?php /* Start the Loop */ ?>
         <article>
 

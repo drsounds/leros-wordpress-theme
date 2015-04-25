@@ -9,6 +9,13 @@ $post_types = array(
             'live_duration' => array(
                 'title' => __('Live duration', 'leros'),
                 'type' => 'number'
+            ),
+            'priority' => array(
+                'title' => 'Priority'
+            ),
+            'image' => array(
+                'title' => __('Image', 'leros'),
+                'type' => 'image'
             )
         )
     ),

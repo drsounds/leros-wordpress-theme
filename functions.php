@@ -298,8 +298,8 @@ add_action( 'customize_register', 'leros_customize_register' );
 function leros_widgets_init() {
 
   register_sidebar( array(
-    'name'          => 'Right Sidebar',
-    'id'            => 'sidebar-1',
+    'name'          => 'Extra Sidebar',
+    'id'            => 'extra-sidebar',
     'before_widget' => '<div>',
     'after_widget'  => '</div>',
     'before_title'  => '<h2 class="rounded">',

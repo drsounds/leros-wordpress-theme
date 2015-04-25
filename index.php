@@ -3,9 +3,10 @@
 
 // #QINOTE: Array filter
 $cids = array();
-
-// Get scoops
+$sids = array();
 $scoops = array();
+// Get scoops
+if (is_front_page() && get_theme_mod('style') == 'press') {
 $_scoops = new WP_Query();
 $_scoops->query(array('post_type' => 'scoop'));
 while($_scoops->have_posts() ):
@@ -33,6 +34,7 @@ while($_scoops->have_posts() ):
             'color' => get_post_meta($articles->post->ID, 'color', TRUE),
             
         );
+        $sids[] = $_article['ID'];
         $scoop['articles'][] = $_article;
     endwhile;
     $scoops[] = $scoop;
@@ -44,11 +46,15 @@ foreach($scoops as $scoop):
         <div class="row">
             <div class="col-md-12">
                 <section class="scoop">
-                <h2><?php echo $scoop['title']?></h2>
+                <p class="title"><?php echo $scoop['title']?></p>
                 <?php
                 foreach($scoop['articles'] as $article):
                 ?>
                 <article>
+                    <?php $image = get_post_meta($article['ID'], 'leros_image', TRUE);
+                    if (!empty($image)):?>
+                    <div class="image-large" style="background-image: url('<?php echo $image ?>')"></div>
+                <?php endif;?>
                     <h3><a href="<?php echo get_the_permalink($article['ID'])?>"><?php echo $article['title']?></a></h3>
                     <p><?php echo $article['excerpt']?></p>
                         <a href="<?php echo get_the_permalink($article['ID'])?>">Läs mer</a>
@@ -60,6 +66,7 @@ foreach($scoops as $scoop):
         </div><br><?php
     }
 endforeach;
+}
 ?>
 <div class="row">
     <?php
@@ -68,7 +75,7 @@ endforeach;
 </div>
 <div class="glazz" style="background-image: url('<?php echo $background_image?>')?>"></div>
 <?php else:?>
-    <div class="col-md-7">
+    <div class="col-md-<?php if (get_theme_mod('style') == 'press'):?>5<?php else:?>6<?php endif;?>">
         <?php /* Start the Loop */
         
 
@@ -82,7 +89,7 @@ endforeach;
                 'after' => '24 hours ago'
             )
         )));
-        while ( $q->have_posts() ) : $q->the_post(); $cids[] = $q->post->ID; 
+        while ( $q->have_posts() ) : $q->the_post();  
         $live_duration = (int)get_post_meta($q->post->ID, 'leros_live_duration', TRUE);
 
         $date = get_the_date('Y-m-d H:i', $q->post->ID);
@@ -90,6 +97,7 @@ endforeach;
         $now = strtotime(current_time('Y-m-d H:i'));
 
         if ($now < $post_date + ($live_duration * 60)) {
+            $cids[] = $q->post->ID;
         ?>
             <div class="rightnow">
                 <b><i class="fa fa-clock-o"></i> <?php echo __('Just nu', 'leros')?></b>: <?php the_time('H:i') ?>  <a href="<?php the_permalink($q->post->ID);?>"><?php the_title();?></a>
@@ -101,10 +109,11 @@ endforeach;
         $i = 0;
         while ( have_posts() ) : the_post();
             if (in_array($post->ID, $cids)) continue;
+            if (in_array($post->ID, $sids)) continue;
             foreach($scoops as $scoop) {
                 if ($scoop['priority'] == $i) {
                     ?><section class="scoop">
-                    <h2><?php echo $scoop['title']?></h2>
+                    <p class="title"><?php echo $scoop['title']?></p>
                     <?php
                     foreach($scoop['articles'] as $article):
                     ?>
@@ -120,17 +129,14 @@ endforeach;
             }
          ?>
         <article style="">
-
+            <?php the_time('l, F jS, Y') ?><br>
             <h3><a href="<?php the_permalink();?>"><?php the_title();?></a></h3>
-            <small>Posted on 
-<?php the_time('l, F jS, Y') ?> at 
-<?php the_time() ?>
- under <?php the_category(', ') ?></small>
+            <p><?php the_category(', ') ?>
  <?php if (get_theme_mod('style') == 'press'):
             the_excerpt();
         else:
             the_content();
-        endif;?>
+        endif;?></p>
             <a href="<?php echo get_permalink(); ?>"> Read More...</a>
         </article>
         <hr>
@@ -141,18 +147,18 @@ endforeach;
             <div class="navigation"><p><?php posts_nav_link('&#8734;','&laquo;&laquo; Go Forward 
 In Time','Go Back in Time &raquo;&raquo;'); ?></p></div>
     </div>
-    <div class="col-md-3    <">
+    <div class="col-md-3">
         <?php
         if (get_theme_mod('style') == 'press'):
     if (!is_front_page()):
         leros_recent_news_category(); endif;
          leros_recent_news();   
          leros_categories();
-           if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('sidebar-1')) : 
+        if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('sidebar-1')) : 
 
-         endif; 
-         else:
-            get_sidebar();
+        endif; 
+        else:
+            get_sidebar();  
         endif;?>
     </div>
 
