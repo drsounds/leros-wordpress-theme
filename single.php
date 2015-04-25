@@ -27,8 +27,7 @@
 </div>
     </div>
     <div class="col-md-3" style="border-left: 1px dotted #aaa; min-height: 300pt">
-        <div class="box">
-            <div class="box-content">
+        
                 <?php get_template_part('sidebar', 'leros');?>
         <?php /*
         if (get_theme_mod('style') == 'press'):
@@ -53,8 +52,6 @@
             else:
                 get_sidebar();
             endif;*/?>
-        </div>
-    </div>
     </div>
     
 </div>
