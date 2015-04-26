@@ -3,8 +3,10 @@
 require('lessc.php');
 require_once('../../../wp-load.php');
 
-$fil = fopen('style2.less', 'rb');
-$less = fread($fil, filesize('style2.less'));
+$style = 'light';
+
+$fil = fopen($style . '.less', 'rb');
+$less = fread($fil, filesize($style . '.less'));
 fclose($fil);
 
 

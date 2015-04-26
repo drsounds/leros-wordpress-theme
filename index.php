@@ -81,10 +81,6 @@ endforeach;
                 <h5><?php _e('Latest Posts', 'leros')?></h5>
             </div>
             <div class="box-content">
-                <div class="btn-group">
-                    <a class="btn btn-default">Test</a>
-                    <a class="btn btn-primary">Test</a>
-                </div>
 
         <?php /* Start the Loop */
         
